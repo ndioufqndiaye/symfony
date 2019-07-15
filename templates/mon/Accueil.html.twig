@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+ {% block body %}
+{% if employer %}
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">matricule</th>
+      <th scope="col">nomcomplet</th>
+      <th scope="col">email</th>
+      <th scope="col">datenais</th>
+      <th scope="col">salaire</th>
+      <th scope="col">service</th>
+      <th scope="col">modifier</th>
+      <th scope="col">supprimer</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for employe in employer %}
+    <tr>
+                <td>{{employe.matricule}}</td>
+                <td>{{employe.nomcomplet}}</td>
+                <td>{{employe.email}}</td>
+                <td>{{employe.datenais|date('y-m-d')}}</td>
+                <td>{{employe.salaire}}</td>
+                <td>{{employe.service.libelle}}</td>
+                <td><button><a href="/mon/{{employe.id}}/edit">modifier</a></button></td>
+                <td><button><a href="/mon/{{employe.id}}/supprimer">supprimer</a></button></td>
+
+
+
+            </tr>
+    
+  
+
+  
+           
+    {% endfor %}
+
+</tbody>
+</table>
+{% else %}
+    <p>personne à afficher</p>
+{% endif %}
+
+ {% endblock %}
